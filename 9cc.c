@@ -9,6 +9,18 @@ enum {
   TK_EOF,       // 入力の終わりを表すトークン
 };
 
+enum {
+  ND_NUM = 256,     // 整数のノードの型
+};
+
+// 抽象構文木のノードの型
+typedef struct Node {
+  int ty;           // 演算子かND_NUM
+  struct Node *lhs; // 左辺
+  struct Node *rhs; // 右辺
+  int val;          // tyがND_NUMの場合のみ使う
+} Node;
+
 // トークンの型
 typedef struct {
   int ty;      // トークンの型
